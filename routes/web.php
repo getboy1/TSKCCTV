@@ -10,7 +10,27 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Frontend site ............................
+Route::get('/','HomeController@index');
 
-Route::get('/', function () {
-    return view('layout');
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Backend site ............................
+Route::get('/logout','SuperAdminController@logout');
+Route::get('/admin','AdminController@index');
+Route::get('/dashboard','AdminController@show_dashboard');
+Route::post('/admin-dashboard','AdminController@dashboard');
+
+//Category related routes
+Route::get('/add-category','CategoryController@index');
