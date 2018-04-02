@@ -49,3 +49,12 @@ Route::get('/all-menufacture','MenufactureController@all_menufacture');
 Route::get('/delete-menufacture/{menufacture_id}','MenufactureController@delete_menufacture');
 Route::get('/unactive_menufacture/{menufacture_id}','MenufactureController@unactive_menufacture');
 Route::get('/active_menufacture/{menufacture_id}','MenufactureController@active_menufacture');
+Route::get('/edit-menufacture/{menufacture_id}','MenufactureController@edit_menufacture');
+Route::post('/update-menufacture/{menufacture_id}','MenufactureController@update_menufacture');
+
+//Products routs are here
+Route::get('/add-product','ProductController@index');
+Route::post('/save-product','ProductController@save_product');
+Route::get('/all-product','ProductController@all_product');
+Route::get('/unactive_product/{product_id}','ProductController@unactive_product');
+Route::get('/active_product/{product_id}','ProductController@active_product');
