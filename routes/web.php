@@ -13,9 +13,10 @@
 //Frontend site ............................
 Route::get('/','HomeController@index');
 
-
-
-
+//show category wise product Here
+Route::get('/product_by_category/{category_id}','HomeController@show_product_by_category');
+Route::get('/product_by_menufacture/{menufacture_id}','HomeController@show_product_by_menufacture');
+Route::get('/view_product/{product_id}','HomeController@product_details_by_id');
 
 
 
@@ -66,3 +67,4 @@ Route::post('/save-slider','SliderController@save_slider');
 Route::get('/all-slider','SliderController@all_slider');
 Route::get('/unactive_slider/{slider_id}','SliderController@unactive_slider');
 Route::get('/active_slider/{slider_id}','SliderController@active_slider');
+Route::get('/delete-slider/{slider_id}','SliderController@delete_slider');

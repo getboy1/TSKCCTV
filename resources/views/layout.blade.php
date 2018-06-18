@@ -32,7 +32,7 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								
+
 							</ul>
 						</div>
 					</div>
@@ -111,7 +111,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
+								<li><a href="/" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
@@ -142,72 +142,63 @@
 		</div><!--/header-bottom-->
 	</header><!--/header-->
 
-	<section id="slider"><!--slider-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
-						</ol>
+  <section id="slider"><!--slider-->
+    <div class="container">
+      <div class="row">
 
-						<div class="carousel-inner">
-							<div class="item active">
-								<div class="col-sm-6">
-									<h1><span>CCTV</span>-TSKCHAN</h1>
-									<h2>E-Commerce</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{asset('frontend/images/home/1.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-sm-6">
-								<h1><span>CCTV</span>-TSKCHAN</h1>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{asset('frontend/images/home/2.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
-								</div>
-							</div>
+        <div class="col-sm-12">
+          <div id="slider-carousel" class="carousel slide" data-ride="carousel">
 
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>CCTV</span>-TSKCHAN</h1>
-									<h2>Ecommerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{asset('frontend/images/home/3.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('frontend/images/home/pricing.png')}}" class="pricing" alt="" />
-								</div>
-							</div>
+            <?php $item_active = 1;
+            $all_publish_slider = DB::table('tbl_slider')
+            ->where('publication_status', 1)
+            ->get(); ?>
 
-						</div>
+            <ol class="carousel-indicators">
+              <?php
+                $i = 1;
+                $active = 1;
+                foreach($all_publish_slider as $slider)
+                {?>
 
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-							<i class="fa fa-angle-left"></i>
-						</a>
-						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</div>
+                  <li data-target="#slider-carousel" data-slide-to="{{$i++}}"
+                  class= <?php echo ($active == 1) ? "active" : ""?>></li>
+                  <?php $active++; }?>
+                </ol>
 
-				</div>
-			</div>
-		</div>
-	</section><!--/slider-->
+          <div class="carousel-inner">
+            <?php
+              foreach($all_publish_slider as $slider)
+              {?>
 
-	<section>
+                <div class="item <?php echo ($item_active == 1) ? "active" : ""?> ">
+                  <div class="col-sm-6">
+                    <h1><span>E</span>-SHOPPER</h1>
+                    <h2>Free E-Commerce Template</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                      incididunt ut labore et dolore magna aliqua. </p>
+                      <button type="button" class="btn btn-default get">Get it now</button>
+                    </div>
+                    <div class="col-sm-6">
+                      <img src="{{URL::to($slider->slider_image)}}" class="girl img-responsive" alt=""/>
+                      <img src="{{asset('frontend/images/home/pricing.png')}}" class="pricing" alt=""/>
+                    </div>
+                  </div>
+                <?php $item_active++; } ?>
+              </div>
+                  <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="next">
+                    <i class="fa fa-angle-left"></i>
+                  </a>
+                  <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="prev">
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section><!--/slider-->
+
+
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
@@ -223,7 +214,7 @@
               foreach($all_published_category as $v_category){?>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">{{$v_category->category_name}}</a></h4>
+									<h4 class="panel-title"><a href="{{URL::to('/product_by_category/' .$v_category->category_id)}}">{{$v_category->category_name}}</a></h4>
 								</div>
 							</div>
 
@@ -240,7 +231,7 @@
                                           ->get();
 
                   foreach($all_published_menufacture as $v_menufacture){?>
-									<li><a href="#"> <span class="pull-right">(50)</span>{{$v_menufacture->menufacture_name}}</a></li>
+									<li><a href="{{URL::to('/product_by_menufacture/' .$v_menufacture->menufacture_id)}}"> <span class="pull-right">(50)</span>{{$v_menufacture->menufacture_name}}</a></li>
 							   <?php } ?>
 								</ul>
 							</div>

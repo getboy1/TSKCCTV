@@ -104,6 +104,15 @@ class SliderController extends Controller
            return Redirect::to('/all-slider');
      }
 
+     public function delete_slider($slider_id)
+     {
+       DB::table('tbl_slider')
+         ->where('slider_id',$slider_id)
+         ->delete();
+       Session::get('message','slider Delete successfully !');
+         return Redirect::to('/all-slider');
+     }
+
     public function edit($id)
     {
         //
