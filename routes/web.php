@@ -17,8 +17,9 @@ Route::get('/','HomeController@index');
 Route::get('/product_by_category/{category_id}','HomeController@show_product_by_category');
 Route::get('/product_by_menufacture/{menufacture_id}','HomeController@show_product_by_menufacture');
 Route::get('/view_product/{product_id}','HomeController@product_details_by_id');
-
-
+Route::post('/add-to-cart','CartController@add_to_cart');
+Route::get('/show-cart','CartController@show_cart');
+Route::get('/delete-to-cart/{rowId}','CartController@delete_to_cart');
 
 
 
