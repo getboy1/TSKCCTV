@@ -42,9 +42,12 @@
             </td>
             <td class="cart_quantity">
               <div class="cart_quantity_button">
-                <a class="cart_quantity_up" href=""> + </a>
-                <input class="cart_quantity_input" type="text" name="quantity" value="{{$v_contents->qty}}" autocomplete="off" size="2">
-                <a class="cart_quantity_down" href=""> - </a>
+                <form action="{{url('/update-cart')}}" method="post">
+                  {{ csrf_field() }}
+                <input class="cart_quantity_input" type="text" name="qty" value="{{$v_contents->qty}}" autocomplete="off" size="2">
+                <input type="hidden" name="rowId" value="{{$v_contents->rowId}}">
+                <input type="submit" name="submit" value="update" class="btn btn-sm btn-default">
+                </form>
               </div>
             </td>
             <td class="cart_total">
@@ -132,7 +135,7 @@
             <li>Total <span>{{Cart::total()}}</span></li>
           </ul>
             <a class="btn btn-default update" href="">Update</a>
-            <a class="btn btn-default check_out" href="">Check Out</a>
+            <a class="btn btn-default check_out" href="{{URL::to('/login-check')}}">Check Out</a>
         </div>
       </div>
     </div>
